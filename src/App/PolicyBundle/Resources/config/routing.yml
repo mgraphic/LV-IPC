@@ -1,0 +1,31 @@
+# Admin pages
+admin_index:
+    pattern: /admin
+    defaults: { _controller: PolicyBundle:Admin:index }
+
+admin_search:
+    pattern: /admin/search
+    defaults: { _controller: PolicyBundle:Admin:search }
+    requirements: { _method: post }
+
+admin_view_policy_details:
+    pattern: /admin/view-policy/{policyNumber}
+    defaults: { _controller: PolicyBundle:Admin:viewPolicyDetails }
+
+# Customer account pages
+customer_index:
+    pattern: /account
+    defaults: { _controller: PolicyBundle:Customer:index }
+
+customer_view_policy_details:
+    pattern: /account/view-policy/{policyNumber}
+    defaults: { _controller: PolicyBundle:Customer:viewPolicyDetails }
+
+make_payment:
+    pattern: /account/renew/{policyNumber}
+    defaults: { _controller: PolicyBundle:Customer:makePayment }
+
+process_payment:
+    pattern: /account/payment/{policyNumber}
+    defaults: { _controller: PolicyBundle:Customer:processPayment }
+    requirements: { _method: post }

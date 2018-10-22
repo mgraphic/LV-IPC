@@ -1,0 +1,16 @@
+<!-- HTML file for customer account homepage -->
+
+<section>
+    <h1>My Policies</h1>
+    {% for policy in policies %}
+        <div>
+            <a href="{{ app.generateUrl('customer_view_policy_details', policy.getPolicyNumber()) }}">
+                {{ policy.getPolicyType() }} #{{ policy.getPolicyNumber() }}
+                {{ policy.getName() }}
+                {% if strtotime('+1 month') >= policy.getDateExpire()->format('U') %}
+                    Time to renew Policy
+                {% endif %}
+            </a>
+        </div>
+    {% endfor %}
+</section>

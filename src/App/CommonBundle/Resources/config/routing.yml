@@ -1,0 +1,8 @@
+index:
+    pattern:  /
+    defaults: { _controller: CommonBundle:User:catchAllAction }
+
+login:
+    pattern:  /login
+    defaults: { _controller: CommonBundle:User:catchAllAction }
+    requirements: { _method: post }

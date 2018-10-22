@@ -1,0 +1,21 @@
+<!-- HTML file for customer policy holder details -->
+
+<section>
+    <h1>Policy #{{ policy.getPolicyNumber() }}</h1>
+    {{ policy.getPolicyType() }}
+    {{ policy.getName() }}
+    {% set policyDetails = policy.getDetails() %}
+    {% if policy.getPolicyType() == 'auto' %}
+        {{ policyDetails.getVehicleYear() }}
+        {{ policyDetails.getVehicleMake() }}
+        {{ policyDetails.getVehicleModel() }}
+    {% endif %}
+    {% if policy.getPolicyType() == 'health' %}
+        {{ policyDetails.getType() }}
+        {{ policyDetails.getDeductable() }}
+    {% endif %}
+    
+    {% if strtotime('+1 month') >= policy.getDateExpire()->format('U') %}
+        <a href="{{ app.generateUrl('make_payment', policy.getPolicyNumber()) }}">Renew Now</a>
+    {% endif %}
+</section>
